@@ -10,3 +10,6 @@ With polymorphism, an object will use the method that is lowest in the inheritan
 However, the method must first exist in the parent class for it to be called. 
 
 If there is no method in the child class, the method can still be called without a problem. 
+
+### Note For Child Class Constructor
+**REMEMBER!!!:** for a child class constructor to work, the first line must be *super(param)* if the parent class constructor needs parameters.
