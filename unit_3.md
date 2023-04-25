@@ -13,12 +13,12 @@
 
 ### Extension (for advanced programmers only): 
 ```java
-if(condition){  
-    return a;  
-}  
-else{  
-    return b;  
-}  
+if(condition){
+    return a;
+}
+else{
+    return b;
+}
 ```
 Can be written as 
 ```java 
