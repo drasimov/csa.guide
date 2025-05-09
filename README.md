@@ -29,5 +29,5 @@ Here you can see the tips and tricks to get a 5, compiled based on experience fr
 ### About us
 
 This is a community project. Feel free to submit or write your guides to trash code.
-Connect with us: kirakbit@gmail.com
+Connect with us: kirakbit@gmail.com or rjiang880@gmail.com
 [More about us](about.md) <br>
