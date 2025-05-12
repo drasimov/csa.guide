@@ -10,7 +10,7 @@
 - (int)(x + 0.5) for positive x and (int)(x – 0.5) for negative x 
 ---
 ## Some Notes to Refer to:
-  ### Variables and data types:
+  - Variables and data types:
     - int=integer=5
     - double=decimals=5.0
     - char=characters='A'
