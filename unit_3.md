@@ -23,4 +23,5 @@ else{
 Can be written as 
 ```java 
 return condition ? a:b;
+//This is known as a Ternary Operator
 ```
