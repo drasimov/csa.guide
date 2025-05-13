@@ -2,7 +2,7 @@
 # AP CS A Unit One: Primitive Data Types and Casting
 ## 1. Primitive Data Types
 ### Definition
-Primitive data types in Java are fundamental data types that store simple values directly in memory. Unlike objects, they lack methods or properties and represent raw data. In AP Computer Science A (AP CS A) Unit 1, the primary focus is on `int`, `double`, and `boolean`, though other primitive types exist in Java.
+Primitive data types in Java are fundamental data types that store simple values directly in memory. Unlike objects, they lack methods or properties and represent raw data. In AP Computer Science A (AP CS A) Unit One, the primary focus is on `int`, `double`, and `boolean`, though other primitive types exist in Java.
 ### Core Types for AP CS A
 - **`int`**: A 32-bit integer representing whole numbers, with a range of -2,147,483,648 to 2,147,483,647 ($$-2^{31}$$ to $$2^{31}-1$$). Suitable for discrete values like AP scores.
   - Example: `int apScore = 5;`
@@ -68,7 +68,6 @@ Temporary GPA: 3.85
 - **Overflow**: Assigning a value beyond a type’s range causes errors. Example: `byte apExams = 128;` exceeds `byte`’s range.
 - **Incorrect Type Assignment**: Assigning a `double` to an `int` without casting fails. Example: `int gpa = 4.0;` requires `(int)`.
 - **Missing Suffix**: Omitting `L` for `long` or `f` for `float` literals causes compilation errors. Example: `float tempGpa = 3.85;` needs `f`.
-
 ---
 ## 2. Data Type Casting
 ### Definition
@@ -145,9 +144,9 @@ Precise GPA: 3.8499999046325684
 - **Rounding Errors**: Using the positive rounding formula for negative numbers yields incorrect results. Example: `(int)(-3.95 + 0.5)` → `-3` (should be `-4`).
 - **Overflow in Narrowing**: Casting a `long` to `int` may produce unexpected results if the value exceeds `int`’s range.
 ---
-## 3. Connection to AP CS A Unit 1
+## 3. Connection to AP CS A Unit One
 ### Curriculum Context
-AP CS A Unit 1 introduces Java programming fundamentals, including:
+AP CS A Unit One introduces Java programming fundamentals, including:
 - **Variables and Data Types**: Declaring and using `int`, `double`, and `boolean` to represent academic data like scores and GPAs.
 - **Basic Operations**: Arithmetic operations (`+`, `-`, `*`, `/`, `%`) often require casting for mixed types (e.g., averaging `int` scores as a `double`).
 - **Input/Output**: Using `System.out.println` to display results, sometimes requiring casting for formatting.

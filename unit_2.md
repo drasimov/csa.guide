@@ -102,7 +102,7 @@ The `Math` class provides static methods and constants for mathematical operatio
 ### Key Notes
 - All `Math` methods are `static`, called as `Math.methodName()`.
 - `Math.random()` is pseudo-random, sufficient for AP CS A applications.
-- Extended methods are useful for advanced calculations, though less common in Unit 2.
+- Extended methods are useful for advanced calculations, though less common in Unit Two.
 ### Trash Code Example
 Here's a *ridiculously verbose* way to generate a random AP score (1 to 5):
 ```java
@@ -132,7 +132,7 @@ Your randomly generated AP score is: 3
 ---
 ## 4. Methods
 ### Definition
-A **method** is a reusable block of code that performs a specific task, often taking **parameters** (inputs) and returning a value (or `void` if no return). In Unit 2, methods are introduced via `String` and `Math` class methods and basic user-defined methods.
+A **method** is a reusable block of code that performs a specific task, often taking **parameters** (inputs) and returning a value (or `void` if no return). In Unit Two, methods are introduced via `String` and `Math` class methods and basic user-defined methods.
 ### Key Concepts
 - **Declaration**: `returnType methodName(parameterType param) { ... }`.
 - **Return Types**: `int`, `double`, `String`, etc., or `void` for no return.
