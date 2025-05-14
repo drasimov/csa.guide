@@ -1,4 +1,5 @@
 [Go back to home page](README.md)
+# [next](unit_2.md)
 # AP CS A Unit One: Primitive Data Types and Casting
 ## 1. Primitive Data Types
 ### Definition
