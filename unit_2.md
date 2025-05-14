@@ -67,7 +67,8 @@ public class EpicInitialsExtractor {
         if (spaceIndex != -1) { // Only if we found a space
             initials = initials + fullName.charAt(0); // First initial
             initials = initials + fullName.charAt(spaceIndex + 1); // Last initial
-        } else {
+        }
+        else {
             initials = fullName.charAt(0) + ""; // Fallback for single names
         }
         System.out.println("Super Complex Initials: " + initials.toUpperCase());
