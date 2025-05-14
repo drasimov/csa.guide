@@ -4,7 +4,8 @@ This is a public project initiated by a few students graduating from the 2020 cl
 ### Contributor list
 1. One-Kingyo
 2. Ja-va1234
-
+3. drasimov
+4. richie-rich90454
 ### Contact us
 If you want to submit some trash code or tutorials on writing trash code, feel free to be a contributor to this project.
 If you are contributing, contact: kirakbit@gmail.com or rjiang880@gmail.com
