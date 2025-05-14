@@ -286,6 +286,7 @@ To further enhance your knowledge of loops, searching, and sorting, consider exp
 ### 5.1 Nested Loops  
 **Nested loops** are loops within loops, useful for processing multi-dimensional data structures like 2D arrays (e.g., a grid of student grades).  
 - **Example**: Iterating through rows and columns of a 2D array to calculate averages.  
+{% raw %}
 ```java
 int[][] grades = {{90, 85}, {88, 92}, {87, 89}};
 for (int i = 0; i < grades.length; i++) {  
@@ -295,6 +296,7 @@ for (int i = 0; i < grades.length; i++) {
 	System.out.println();  
 }
 ```
+{% endraw %}
 ### 5.2 Loop Control Statements  
 **`break`** and **`continue`** control loop execution:  
 - **`break`**: Exits the loop entirely, useful for early termination (e.g., stopping a search once the target is found).  
