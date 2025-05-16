@@ -8,3 +8,5 @@ This is a public project initiated by a few students graduating from the 2020 cl
 ### Contact us
 If you want to submit some trash code or tutorials on writing trash code, feel free to be a contributor to this project.
 If you are contributing, contact: kirakbit@gmail.com or rjiang880@gmail.com
+### Easter Egg
+Just in case you want to see it: [Easter Egg](cxk.md)
