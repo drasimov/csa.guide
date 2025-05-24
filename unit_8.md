@@ -219,7 +219,7 @@ Total of m1: 21
 ---
 ## 10. Practice Questions
 1. **Code Tracing**: What does this print?
-{% raw %}
+   {% raw %}
    ```java
    int[][] x = {{1,2},{3,4}};
    for(int[] row : x) {
@@ -227,7 +227,7 @@ Total of m1: 21
        System.out.println();
    }
    ```
-{% endraw %}
+   {% endraw %}
 2. **Method Implementation**: Write `public static int diagonalSum(int[][] m)` that returns sum of `m[i][i]`.
 3. **Bug Fixing**: Identify and fix the error in this snippet:
    ```java
@@ -247,6 +247,7 @@ Total of m1: 21
 Below are practical examples that demonstrate how 2D arrays integrate with advanced Java features and libraries beyond the AP curriculum.
 * **Streams API Flattening**
   Use Java 8+ streams to flatten a 2D array into a single stream for concise operations.
+  {% raw %}
   ```java
   import java.util.Arrays;
   public class StreamFlatten {
@@ -259,6 +260,7 @@ Below are practical examples that demonstrate how 2D arrays integrate with advan
       }
   }
   ```
+  {% endraw %}
 * **JavaFX Grid Visualization**
   Display a 2D array as a grid of rectangles with JavaFX for simulations (e.g., Game of Life).
   ```java
