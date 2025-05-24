@@ -219,6 +219,7 @@ Total of m1: 21
 ---
 ## 10. Practice Questions
 1. **Code Tracing**: What does this print?
+{% raw %}
    ```java
    int[][] x = {{1,2},{3,4}};
    for(int[] row : x) {
@@ -226,6 +227,7 @@ Total of m1: 21
        System.out.println();
    }
    ```
+{% endraw %}
 2. **Method Implementation**: Write `public static int diagonalSum(int[][] m)` that returns sum of `m[i][i]`.
 3. **Bug Fixing**: Identify and fix the error in this snippet:
    ```java
