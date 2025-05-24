@@ -324,10 +324,12 @@ Below are practical examples that demonstrate how 2D arrays integrate with advan
   ```
 * **Deep Operations with Arrays Utility**
   Use `Arrays.deepToString()` and `Arrays.deepEquals()` for quick debugging and equality checks:
+  {% raw %}
   ```java
   int[][] a = {{1,2},{3,4}};
   int[][] b = {{1,2},{3,4}};
   System.out.println(Arrays.deepToString(a));           // [[1, 2], [3, 4]]
   System.out.println(Arrays.deepEquals(a, b));          // true
   ```
+  {% endraw %}
 These examples bridge 2D arrays with modern Java techniques, GUI frameworks, performance analysis, and image processing—extending your skills well beyond the AP curriculum.
