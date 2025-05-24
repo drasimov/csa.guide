@@ -5,7 +5,7 @@
 Loops allow programmers to repeat code efficiently. Unit Four emphasizes the **for loop** and **enhanced for loop** (for-each loop), which are key tools for working with arrays and repetitive tasks.
 ### 1.1 For Loop  
 #### Definition  
-A **for loop** is a control structure that repeats a block of code a specific number of times, based on an initialization, a test condition, and an increment. It’s perfect when you know how many iterations are needed, such as processing array elements.
+A **for loop** is a control structure that repeats a block of code a specific number of times, based on an initialization, a test condition, and an increment. It's perfect when you know how many iterations are needed, such as processing array elements.
 #### Syntax  
 ```java
 for (initialization; test condition; increment) {  
@@ -69,14 +69,14 @@ Grade: 87
 - **Limitation**: Cannot modify array elements or access their indices directly.  
 - **Top Tip**: Use this loop when you only need to read elements sequentially, not their positions.  
 #### Common Errors  
-- **Modifying Elements**: Changes to `element` don’t affect the original array (it’s a copy).  
+- **Modifying Elements**: Changes to `element` don't affect the original array (it's a copy).  
 - **Misusing with Non-Iterables**: Only works with arrays or collections, not single values.  
 ---
 ## 2. Searching Algorithms  
 Searching algorithms locate specific elements in a data structure. Unit Four covers **linear search** and **binary search**, foundational techniques for data retrieval.
 ### 2.1 Linear Search  
 #### Definition  
-**Linear search** sequentially checks each element in a list until it finds the target or exhausts the list. It’s simple and works on any list, sorted or unsorted.
+**Linear search** sequentially checks each element in a list until it finds the target or exhausts the list. It's simple and works on any list, sorted or unsorted.
 #### Implementation  
 ```java
 public static int linearSearch(int[] arr, int target) {  
@@ -98,7 +98,7 @@ System.out.println("Index of 88: " + index);
 #### Key Notes  
 - Time complexity: O(n), where n is the list size—slow for large datasets.  
 - No sorting required, making it versatile.  
-- Returns -1 conventionally if the target isn’t found.  
+- Returns -1 conventionally if the target isn't found.  
 #### Common Errors  
 - **Out-of-Bounds Access**: Ensure the loop condition is `i < arr.length`.  
 - **Missing Return Value**: Always handle the “not found” case.  
@@ -140,7 +140,7 @@ System.out.println("Index of 90: " + index);
 #### Common Errors  
 - **Unsorted List**: Applying binary search to an unsorted list gives incorrect results.  
 - **Overflow**: Use `left + (right - left) / 2` instead of `(left + right) / 2` to avoid integer overflow.  
-- **Loop Condition**: `left <= right` ensures the target isn’t missed.  
+- **Loop Condition**: `left <= right` ensures the target isn't missed.  
 ---
 ## 3. Sorting Algorithms  
 Sorting organizes data into a specific order (e.g., ascending). Unit Four focuses on **selection sort**, **insertion sort**, and introduces **merge sort** for its efficiency.
@@ -212,7 +212,7 @@ System.out.println(Arrays.toString(grades));
 ---
 ### 3.3 Merge Sort  
 #### Definition  
-**Merge sort** is a divide-and-conquer algorithm that recursively splits the list into halves, sorts them, and merges them back together. It’s more efficient than O(n²) sorts.
+**Merge sort** is a divide-and-conquer algorithm that recursively splits the list into halves, sorts them, and merges them back together. It's more efficient than O(n²) sorts.
 #### Implementation  
 ```java
 public static void mergeSort(int[] arr) {  
@@ -262,14 +262,14 @@ System.out.println(Arrays.toString(grades));
 Unit Four focuses on:  
 - **Loops**: Using `for` and enhanced `for` loops to process arrays and repeat tasks.  
 - **Searching**: Implementing linear and binary search to locate data.  
-- **Sorting**: Applying selection sort, insertion sort, and understanding merge sort’s efficiency.  
+- **Sorting**: Applying selection sort, insertion sort, and understanding merge sort's efficiency.  
 - **Array Manipulation**: Using loops and algorithms to modify arrays.  
 ### Relevance  
 - Loops enable repetitive tasks like grading multiple students.  
-- Searching finds specific data (e.g., a student’s score).  
+- Searching finds specific data (e.g., a student's score).  
 - Sorting organizes data for analysis or display (e.g., ranking grades).  
 ### Practice Questions  
-1. **Loop Tracing**: What’s the output?  
+1. **Loop Tracing**: What's the output?  
    ```java
    for (int i = 1; i < 4; i++) {  
 	   System.out.print(i + " ");  
@@ -304,9 +304,9 @@ for (int i = 0; i < grades.length; i++) {
 - **Example**: Using `break` in a loop to stop after finding a specific grade.  
 ### 5.3 Sorting Variations  
 Explore other sorting algorithms to understand their efficiencies:  
-- **Bubble Sort**: Repeatedly swaps adjacent elements if they’re in the wrong order $(O(n^2))$.  
+- **Bubble Sort**: Repeatedly swaps adjacent elements if they're in the wrong order $(O(n^2))$.  
 - **Quicksort**: A faster divide-and-conquer algorithm (average $O(n \log n)$), though not covered in AP CS A.  
-- **Comparison**: Compare bubble sort’s simplicity with merge sort’s efficiency.  
+- **Comparison**: Compare bubble sort's simplicity with merge sort's efficiency.  
 ### 5.4 Search Optimizations  
 For faster searches, consider:  
 - **Hashing**: Using hash tables for O(1) average-case lookups (advanced topic).  
@@ -335,7 +335,7 @@ Choose loops and algorithms based on data characteristics:
 - **Large Datasets**: Prefer efficient algorithms like merge sort or binary search.  
 - **Sorted Data**: Use binary search for faster lookups.  
 ### 5.9 Java-Specific Features  
-Leverage Java’s built-in methods for convenience:  
+Leverage Java's built-in methods for convenience:  
 - **`Arrays.sort(arr)`**: Sorts an array efficiently.  
 - **`Arrays.binarySearch(arr, target)`**: Performs binary search on a sorted array.  
 - **When to Use**: For quick implementations, but understand the underlying algorithms.  

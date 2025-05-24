@@ -2,7 +2,7 @@
 # [previous](unit_4.md) <-- [next](unit_6.md)  
 # AP CS A Unit Five: Crafting Classes
 ## 1. Structure of a Class
-A **class** in Java defines a custom data type, serving as a blueprint for objects by encapsulating **attributes (instance variables)** and **methods (behaviors)**. Classes model real-world entities, such as a student’s academic profile, making them relatable for students.
+A **class** in Java defines a custom data type, serving as a blueprint for objects by encapsulating **attributes (instance variables)** and **methods (behaviors)**. Classes model real-world entities, such as a student's academic profile, making them relatable for students.
 ```java
 public class AcademicProfile {
     // Attributes
@@ -18,7 +18,7 @@ public class AcademicProfile {
 }
 ```
 ## 2. Constructors
-Constructors are special methods that initialize new objects. They share the class’s name and have no return type, setting up initial attribute values critical for objects like a scholar’s academic record.
+Constructors are special methods that initialize new objects. They share the class's name and have no return type, setting up initial attribute values critical for objects like a scholar's academic record.
 * **Default constructor**: Automatically provided if no constructors are defined, initializing attributes to default values.
 * **Parameterized constructor**: Accepts parameters to set specific initial values.
 ```java
@@ -36,7 +36,7 @@ Effective documentation improves code clarity, a vital skill for AP CS A student
 * **Single-line comment**: `// Tracks scholar's name`
 * **Multi-line comment**:
   ```java
-  /* Stores scholar’s academic data
+  /* Stores scholar's academic data
      for school records */
   ```
 * **JavaDoc comment**: Generates professional documentation for classes and methods:
@@ -64,7 +64,7 @@ Encapsulation, a core principle in AP CS A, protects attributes by declaring the
   }
   ```
 ## 5. Designing Methods
-Methods define a class’s functionality, enabling actions like checking academic status, a task relatable to students’ experiences.
+Methods define a class's functionality, enabling actions like checking academic status, a task relatable to students' experiences.
 * Syntax:
   ```java
   public returnType methodName(parameters) {
@@ -95,14 +95,14 @@ Understanding scope and access is critical for AP CS A students to manage data v
 * **`public`**: Allows access from any class.
 * **Scope**: Determines where variables and methods are accessible (e.g., local to a method, instance-level, or class-level).
 ## 8. The `this` Keyword
-The `this` keyword clarifies references to the current object’s attributes, especially when parameter names match attribute names, addressing a common challenge for students.
+The `this` keyword clarifies references to the current object's attributes, especially when parameter names match attribute names, addressing a common challenge for students.
 ```java
 public void setScholarName(String scholarName) {
     this.scholarName = scholarName;
 }
 ```
 ## 9. Ethical and Social Implications of Computing
-This section encourages students to reflect on computing’s broader impact, aligning with AP CS A’s emphasis on responsible programming:
+This section encourages students to reflect on computing's broader impact, aligning with AP CS A's emphasis on responsible programming:
 * **Data privacy**: Safeguarding scholar records.
 * **Algorithmic fairness**: Ensuring unbiased grade calculations.
 * **Ethical data use**: Respecting intellectual property in academic systems.

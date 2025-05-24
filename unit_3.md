@@ -3,7 +3,7 @@
 # AP CS A Unit Three: Boolean Expressions and Conditional Statements
 ## 1. Boolean Expressions
 ### Definition
-A Boolean expression in Java evaluates to either `true` or `false`, forming the foundation for decision-making in programs. In AP Computer Science A (AP CS A) Unit Three, Boolean expressions are used to control the flow of execution through conditional statements, enabling programs to respond dynamically to different inputs or conditions, such as determining a student’s eligibility for a course based based on their grades.
+A Boolean expression in Java evaluates to either `true` or `false`, forming the foundation for decision-making in programs. In AP Computer Science A (AP CS A) Unit Three, Boolean expressions are used to control the flow of execution through conditional statements, enabling programs to respond dynamically to different inputs or conditions, such as determining a student's eligibility for a course based based on their grades.
 ### Components of Boolean Expressions
 Boolean expressions are constructed using:
 - **Relational Operators**: Compare two values and return a `boolean` result.
@@ -133,9 +133,9 @@ Conditional statements (`if`, `else if`, `else`) allow a program to execute diff
   ```
 - **Redundant Conditions**: Overlapping conditions (e.g., `if (score >= 90)` followed by `else if (score >= 80 && score <= 90)`) can be simplified.
 ---
-## 3. De Morgan’s Laws
+## 3. De Morgan's Laws
 ### Definition
-De Morgan’s Laws describe the relationship between logical operators and their negations, allowing simplification or transformation of Boolean expressions. They are critical for optimizing conditional logic and understanding complex conditions in AP CS A.
+De Morgan's Laws describe the relationship between logical operators and their negations, allowing simplification or transformation of Boolean expressions. They are critical for optimizing conditional logic and understanding complex conditions in AP CS A.
 ### Rules
 - **First Law**: The complement of the conjunction of two conditions is equivalent to the disjunction of their complements.
   - Formal: `!(A && B) == !A || !B`
@@ -144,7 +144,7 @@ De Morgan’s Laws describe the relationship between logical operators and their
   - Formal: `!(A || B) == !A && !B`
   - Example: `!(score < 60 || score > 100)` is equivalent to `score >= 60 && score <= 100`.
 ### Application
-De Morgan’s Laws are used to:
+De Morgan's Laws are used to:
 - Simplify complex conditions for readability or performance.
 - Rewrite conditions to avoid nested negations.
 - Verify the equivalence of Boolean expressions in program logic.
@@ -154,7 +154,7 @@ int score = 85;
 boolean attendance = true;
 // Original condition
 boolean notEligible = !(score >= 90 && attendance);
-// Using De Morgan’s Law: !(score >= 90 && attendance) == score < 90 || !attendance
+// Using De Morgan's Law: !(score >= 90 && attendance) == score < 90 || !attendance
 boolean equivalent = score < 90 || !attendance;
 System.out.println("Not Eligible: " + notEligible);// true
 System.out.println("Equivalent: " + equivalent);// true
@@ -165,7 +165,7 @@ Not Eligible: true
 Equivalent: true
 ```
 ### Common Errors
-- **Incorrect Negation**: Misapplying De Morgan’s Laws, such as writing `!(A && B)` as `!A && !B` (incorrect) instead of `!A || !B`.
+- **Incorrect Negation**: Misapplying De Morgan's Laws, such as writing `!(A && B)` as `!A && !B` (incorrect) instead of `!A || !B`.
 - **Forgetting Parentheses**: Negating compound expressions without parentheses can lead to operator precedence issues.
 ---
 ## 4. Ternary Operator
@@ -201,7 +201,7 @@ else {
 - **Overcomplication**: Nesting ternary operators (e.g., `a ? b ? c : d : e`) is hard to read and should be avoided.
 ---
 ## 5. Example Program
-This program demonstrates Boolean expressions, conditional statements, De Morgan’s Laws, and the ternary operator in the context of a student grading system.
+This program demonstrates Boolean expressions, conditional statements, De Morgan's Laws, and the ternary operator in the context of a student grading system.
 ```java
 public class GradeCalculator {
     public static void main(String[] args) {
@@ -213,7 +213,7 @@ public class GradeCalculator {
         boolean isPassing = score >= 60;
         boolean isHonors = score >= 90 && attendance >= 80;
         boolean isInvalid = score < 0 || score > 100;
-        boolean validScore = !(score < 0 || score > 100);// Using De Morgan’s: score >= 0 && score <= 100
+        boolean validScore = !(score < 0 || score > 100);// Using De Morgan's: score >= 0 && score <= 100
         // Conditional statements
         String grade;
         if (score >= 90) {
@@ -254,7 +254,7 @@ public class GradeCalculator {
         System.out.println("Passing: " + isPassing);
         System.out.println("Honors: " + isHonors);
         System.out.println("Invalid Score: " + isInvalid);
-        System.out.println("Valid Score (De Morgan’s): " + validScore);
+        System.out.println("Valid Score (De Morgan's): " + validScore);
         System.out.println("Grade: " + grade);
         System.out.println("Eligibility: " + eligibility);
         System.out.println("Status: " + status);
@@ -270,7 +270,7 @@ Enrolled: true
 Passing: true
 Honors: true
 Invalid Score: false
-Valid Score (De Morgan’s): true
+Valid Score (De Morgan's): true
 Grade: A
 Eligibility: Eligible for honors
 Status: Pass
@@ -282,10 +282,10 @@ AP CS A Unit Three introduces control structures, focusing on:
 - **Boolean Expressions**: Constructing conditions using relational and logical operators to evaluate program state (e.g., grading criteria).
 - **Conditional Statements**: Implementing decision-making logic to handle different scenarios, such as assigning letter grades or checking eligibility.
 - **Program Logic**: Combining expressions and conditionals to create robust programs, a foundation for later units like loops and methods.
-- **De Morgan’s Laws and Ternary Operator**: Advanced tools for optimizing and simplifying code, preparing students for complex problem-solving.
+- **De Morgan's Laws and Ternary Operator**: Advanced tools for optimizing and simplifying code, preparing students for complex problem-solving.
 ### Relevance
 - Boolean expressions and conditionals are critical for real-world applications, such as determining academic outcomes or validating user input.
-- Understanding logical equivalence (via De Morgan’s Laws) enhances code efficiency and clarity.
+- Understanding logical equivalence (via De Morgan's Laws) enhances code efficiency and clarity.
 - Conditional logic is a prerequisite for loops (Unit 4) and method control flow (Unit 5).
 ### Practice Questions
 1. **Code Tracing**: What is the output of this code?
@@ -310,12 +310,12 @@ AP CS A Unit Three introduces control structures, focusing on:
    }
    ```
    **Answer**: Uses `=` (assignment) instead of `==` (comparison), causing a compilation error. Correct: `if (score == 100)`.
-3. **Coding Exercise**: Write a program that takes a score (0–100) and an attendance percentage (0–100), and determines if a student is eligible for a scholarship (score ≥ 85 and attendance ≥ 90). Use De Morgan’s Laws to print if the student is *not* eligible.
+3. **Coding Exercise**: Write a program that takes a score (0–100) and an attendance percentage (0–100), and determines if a student is eligible for a scholarship (score ≥ 85 and attendance ≥ 90). Use De Morgan's Laws to print if the student is *not* eligible.
 ---
 ## 7. Additional Notes
 ### Best Practices
 - Use clear, descriptive variable names (e.g., `isPassing` instead of `b`) to enhance readability.
-- Add comments to explain complex conditional logic or De Morgan’s Law applications.
+- Add comments to explain complex conditional logic or De Morgan's Law applications.
 - Test edge cases (e.g., `score = 90`, `attendance = 0`) to ensure robustness.
 - Avoid overly nested conditionals;consider refactoring into methods (introduced in Unit 5) for clarity.
 ### Extensions
@@ -378,7 +378,7 @@ The following advanced concepts are intended for programmers seeking to deepen t
    ```
    This is equivalent to nested `if-else` statements but is less readable. Prefer `if` statements for complex logic.
 5. **Logical Equivalence and Optimization**  
-   Beyond De Morgan’s Laws, other logical transformations can simplify code. For example, `A && (B || C)` can sometimes be rewritten as `(A && B) || (A && C)` (distributive property) to reduce evaluations.  
+   Beyond De Morgan's Laws, other logical transformations can simplify code. For example, `A && (B || C)` can sometimes be rewritten as `(A && B) || (A && C)` (distributive property) to reduce evaluations.  
    **Example**:
    ```java
    int score = 85;
