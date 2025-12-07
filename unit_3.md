@@ -24,10 +24,10 @@ Boolean expressions are constructed using:
 ### Example
 ```java
 int score = 85;
-boolean isPassing = score >= 60;// true
-boolean isHonors = score >= 90 && score <= 100;// false
-boolean isInvalid = score < 0 || score > 100;// false
-boolean notPassing = !isPassing;// false
+boolean isPassing = score >= 60; // true
+boolean isHonors = score >= 90 && score <= 100; // false
+boolean isInvalid = score < 0 || score > 100; // false
+boolean notPassing = !isPassing; // false
 System.out.println("Passing: " + isPassing);
 System.out.println("Honors: " + isHonors);
 System.out.println("Invalid: " + isInvalid);
@@ -156,8 +156,8 @@ boolean attendance = true;
 boolean notEligible = !(score >= 90 && attendance);
 // Using De Morgan's Law: !(score >= 90 && attendance) == score < 90 || !attendance
 boolean equivalent = score < 90 || !attendance;
-System.out.println("Not Eligible: " + notEligible);// true
-System.out.println("Equivalent: " + equivalent);// true
+System.out.println("Not Eligible: " + notEligible); // true
+System.out.println("Equivalent: " + equivalent); // true
 ```
 **Output**:
 ```
@@ -180,7 +180,7 @@ variable = condition ? valueIfTrue : valueIfFalse;
 ```java
 int score = 85;
 String status = score >= 60 ? "Pass" : "Fail";
-System.out.println("Status: " + status);// Output: Pass
+System.out.println("Status: " + status); // Output: Pass
 ```
 This is equivalent to:
 ```java
@@ -213,7 +213,7 @@ public class GradeCalculator {
         boolean isPassing = score >= 60;
         boolean isHonors = score >= 90 && attendance >= 80;
         boolean isInvalid = score < 0 || score > 100;
-        boolean validScore = !(score < 0 || score > 100);// Using De Morgan's: score >= 0 && score <= 100
+        boolean validScore = !(score < 0 || score > 100); // Using De Morgan's: score >= 0 && score <= 100
         // Conditional statements
         String grade;
         if (score >= 90) {
@@ -343,8 +343,8 @@ The following advanced concepts are intended for programmers seeking to deepen t
    boolean exempt = true;
    boolean result = score >= 90 && score <= 100 || exempt;
    boolean clearResult = (score >= 90 && score <= 100) || exempt;
-   System.out.println("Result: " + result);// true
-   System.out.println("Clear Result: " + clearResult);// true
+   System.out.println("Result: " + result); // true
+   System.out.println("Clear Result: " + clearResult); // true
    ```
    Without parentheses, `score >= 90 && score <= 100 || exempt` is evaluated as `(score >= 90 && score <= 100) || exempt`, but parentheses make intent explicit.
 3. **Using Boolean Methods in Conditions**  
@@ -374,7 +374,7 @@ The following advanced concepts are intended for programmers seeking to deepen t
    ```java
    int score = 75;
    String grade = score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : "F";
-   System.out.println("Grade: " + grade);// C
+   System.out.println("Grade: " + grade); // C
    ```
    This is equivalent to nested `if-else` statements but is less readable. Prefer `if` statements for complex logic.
 5. **Logical Equivalence and Optimization**  
@@ -385,7 +385,7 @@ The following advanced concepts are intended for programmers seeking to deepen t
    int attendance = 75;
    boolean original = score >= 90 && (attendance >= 80 || score >= 95);
    boolean optimized = (score >= 90 && attendance >= 80) || (score >= 95 && attendance >= 80);
-   System.out.println("Original: " + original);// false
-   System.out.println("Optimized: " + optimized);// false
+   System.out.println("Original: " + original); // false
+   System.out.println("Optimized: " + optimized); // false
    ```
    The optimized form may be clearer or more efficient in specific contexts, especially when combined with short-circuit evaluation.

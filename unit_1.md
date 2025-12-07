@@ -32,15 +32,15 @@ Beyond AP CS A’s core types, Java includes additional primitive types useful f
 public class AcademicProfile {
     public static void main(String[] args) {
         // Core AP CS A types
-        int apScore = 5;// AP exam score
-        double gpa = 4.0;// Grade point average
+        int apScore = 5; // AP exam score
+        double gpa = 4.0; // Grade point average
         boolean isEnrolled = true; // Enrollment status
         // Extended types
-        byte apExamsTaken = 3;// Number of AP exams
-        short totalStudents = 1500;// Total students in school
-        char gradeLetter = 'A';// Letter grade
-        long studentId = 123456789012L;// Unique student ID
-        float tempGpa = 3.85f;// Temporary GPA estimate
+        byte apExamsTaken = 3; // Number of AP exams
+        short totalStudents = 1500; // Total students in school
+        char gradeLetter = 'A'; // Letter grade
+        long studentId = 123456789012L; // Unique student ID
+        float tempGpa = 3.85f; // Temporary GPA estimate
         System.out.println("Student Profile:");
         System.out.println("AP Score: " + apScore);
         System.out.println("GPA: " + gpa);
