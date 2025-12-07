@@ -86,6 +86,88 @@ Super Complex Initials: AT
 - **NullPointerException**: Calling methods on a `null` String. Example: `String s = null; s.length();`.
 - **Inefficient Concatenation**: Using `+` in loops creates multiple `String` objects.
 ---
+### 2.5 Comparing Objects: equals() vs ==
+#### Definition
+When comparing objects in Java, it's crucial to understand the difference between the `equals()` method and the `==` operator. This distinction is fundamental in AP CS A for correctly comparing `String` objects and other reference types.
+- **`==` Operator**: Compares **references** (memory addresses). Returns `true` only if both references point to the exact same object in memory.
+- **`equals()` Method**: Compares **content** or values. For `String` objects, it returns `true` if the sequences of characters are identical.
+#### Key Concepts
+- **`==` with Primitives**: For primitive types (`int`, `double`, `boolean`), `==` compares values directly.
+- **`==` with Objects**: For reference types (`String`, `Integer`, etc.), `==` compares memory addresses, not content.
+- **`equals()` Method**: Defined in the `Object` class and overridden by many classes (like `String`) to compare meaningful equality.
+- **String Literals vs. `new String()`**: String literals are pooled, so `"hello" == "hello"` may be `true`, but `new String("hello") == "hello"` is `false`.
+#### Examples
+```java
+// Example 1: String literals (may be pooled)
+String s1 = "AP";
+String s2 = "AP";
+System.out.println(s1 == s2);           // true (same object in pool)
+System.out.println(s1.equals(s2));      // true (same content)
+// Example 2: Explicit new String objects
+String s3 = new String("CS");
+String s4 = new String("CS");
+System.out.println(s3 == s4);           // false (different objects)
+System.out.println(s3.equals(s4));      // true (same content)
+// Example 3: Mixed literal and new
+String s5 = "A";
+String s6 = new String("A");
+System.out.println(s5 == s6);           // false (different objects)
+System.out.println(s5.equals(s6));      // true (same content)
+// Example 4: Primitives vs Wrappers
+Integer a = 5;
+Integer b = 5;
+System.out.println(a == b);             // true (autoboxing may cache small values)
+Integer c = 500;
+Integer d = 500;
+System.out.println(c == d);             // false (different objects)
+System.out.println(c.equals(d));        // true (same value)
+```
+#### Best Practices for AP CS A
+1. **Always use `equals()` for comparing `String` content**.
+   - Correct: `if (str1.equals(str2))`
+   - Incorrect: `if (str1 == str2)` (unless intentionally checking same object)
+2. **For other objects, check if the class overrides `equals()`**.
+   - `Integer`, `Double`, `Boolean` override `equals()` to compare values.
+   - Custom classes may need to override `equals()` (covered in Unit 9).
+3. **Use `==` for primitives and null checks**.
+   - `if (x == 5)` for `int x`
+   - `if (obj == null)` to check for null references
+#### Common Errors
+- **Using `==` to compare strings**: Leads to logical bugs when strings are created differently.
+- **NullPointerException with `equals()`**: Calling `str1.equals(str2)` when `str1` is `null`. Use `"constant".equals(variable)` or check for null first.
+- **Assuming `==` works for wrapper objects**: For `Integer`, `Double`, etc., `==` may work for small cached values (-128 to 127) but not for larger values.
+#### Example Program
+```java
+public class StringComparisonDemo {
+    public static void main(String[] args) {
+        String correctPassword = "APCS2025";
+        String userInput1 = "APCS2025";
+        String userInput2 = new String("APCS2025");
+        System.out.println("Testing password validation:");
+        System.out.println("correctPassword == userInput1: " + (correctPassword == userInput1));
+        System.out.println("correctPassword.equals(userInput1): " + correctPassword.equals(userInput1));
+        System.out.println("correctPassword == userInput2: " + (correctPassword == userInput2));
+        System.out.println("correctPassword.equals(userInput2): " + correctPassword.equals(userInput2));
+        // Safe comparison practice
+        boolean isValid = correctPassword.equals(userInput2);
+        System.out.println("Password valid? " + isValid);
+        // Null-safe comparison
+        String maybeNull = null;
+        System.out.println("Null-safe check: " + "APCS2025".equals(maybeNull));
+    }
+}
+```
+**Output**:
+```
+Testing password validation:
+correctPassword == userInput1: true
+correctPassword.equals(userInput1): true
+correctPassword == userInput2: false
+correctPassword.equals(userInput2): true
+Password valid? true
+Null-safe check: false
+```
+---
 ## 3. Math Class
 ### Definition
 The `Math` class provides static methods and constants for mathematical operations. It's a utility class, not instantiated, and is crucial for calculations in AP CS A.
@@ -233,17 +315,113 @@ AP CS A Unit Two builds on Unit 1 by introducing:
 - Check for `null` before calling object methods.
 - Avoid excessive string concatenation in loops; consider `StringBuilder` (see extensions).
 - Comment trash code to explain its glorious inefficiency.
+### 7.1 Wrapper Classes and Autoboxing
+#### Definition
+Wrapper classes are object representations of primitive data types, allowing primitives to be used in contexts that require objects (e.g., collections like `ArrayList`). In AP CS A, the most commonly used wrapper classes are `Integer`, `Double`, and `Boolean`, corresponding to `int`, `double`, and `boolean` primitives.
+#### Key Concepts
+- **Autoboxing**: Automatic conversion of a primitive to its corresponding wrapper object.
+  ```java
+  Integer wrappedScore = 5; // Autoboxing: int 5 becomes Integer object
+  ```
+- **Unboxing**: Automatic conversion of a wrapper object to its primitive value.
+  ```java
+  int primitiveScore = wrappedScore; // Unboxing: Integer object becomes int
+  ```
+- **Common Wrapper Classes**:
+  - `Integer` for `int`
+  - `Double` for `double`
+  - `Boolean` for `boolean`
+  - `Character` for `char`
+  - `Byte` for `byte`
+  - `Short` for `short`
+  - `Long` for `long`
+  - `Float` for `float`
+#### Why Use Wrapper Classes?
+1. **Collections Requirement**: `ArrayList` and other Java collections can only store objects, not primitives.
+   ```java
+   ArrayList<Integer> scores = new ArrayList<Integer>();
+   scores.add(95); // Autoboxing: int 95 → Integer
+   int first = scores.get(0); // Unboxing: Integer → int
+   ```
+2. **Object Methods**: Wrapper classes provide useful methods like `Integer.parseInt()` or `Double.isNaN()`.
+3. **Nullability**: Wrapper objects can be `null`, representing the absence of a value (primitives cannot be `null`).
+#### Important Methods
+- **`Integer.parseInt(String s)`**: Converts a `String` to an `int`.
+  ```java
+  String input = "42";
+  int value = Integer.parseInt(input); // value = 42
+  ```
+- **`Double.parseDouble(String s)`**: Converts a `String` to a `double`.
+- **`Integer.toString(int i)`**: Converts an `int` to a `String`.
+- **`Integer.MAX_VALUE`, `Integer.MIN_VALUE`**: Constants for maximum and minimum `int` values.
+- **`Double.NaN`, `Double.POSITIVE_INFINITY`**: Special double values.
+#### Autoboxing/Unboxing Examples
+```java
+// Autoboxing examples
+Integer a = 10; // Primitive int 10 autoboxed to Integer
+Double b = 3.14; // Primitive double 3.14 autoboxed to Double
+Boolean c = true; // Primitive boolean true autoboxed to Boolean
+// Unboxing examples
+int x = a; // Integer a unboxed to int
+double y = b; // Double b unboxed to double
+boolean z = c; // Boolean c unboxed to boolean
+// Mixed operations (autoboxing/unboxing happens automatically)
+Integer sum = a + 5; // a unboxed to int, addition performed, result autoboxed to Integer
+```
+#### Caching and Performance
+- Java caches wrapper objects for small values (e.g., `Integer` values from -128 to 127) for performance.
+- This can lead to surprising results with `==` comparison:
+  ```java
+  Integer i1 = 127;
+  Integer i2 = 127;
+  System.out.println(i1 == i2); // true (same cached object)
+  Integer i3 = 128;
+  Integer i4 = 128;
+  System.out.println(i3 == i4); // false (different objects)
+  ```
+- **Always use `equals()` to compare wrapper objects for value equality**.
+#### Common Errors
+- **NullPointerException when Unboxing**: Unboxing a `null` wrapper causes `NullPointerException`.
+  ```java
+  Integer score = null;
+  int s = score; // NullPointerException!
+  ```
+- **Performance Overhead**: Excessive autoboxing/unboxing in loops can impact performance.
+- **Incorrect Method Overloading**: Methods overloaded for primitive and wrapper types may behave unexpectedly.
+#### Example Program
+```java
+public class WrapperDemo {
+    public static void main(String[] args) {
+        // Autoboxing in ArrayList
+        ArrayList<Integer> apScores = new ArrayList<Integer>();
+        apScores.add(5); // Autoboxing
+        apScores.add(4);
+        apScores.add(3);
+        // Unboxing for calculation
+        int total = 0;
+        for (Integer score : apScores) {
+            total += score; // Unboxing in each iteration
+        }
+        double average = (double) total / apScores.size();
+        System.out.println("Average AP Score: " + average);
+        // String conversion
+        String input = "95";
+        int grade = Integer.parseInt(input);
+        System.out.println("Parsed grade: " + grade);
+        // Null safety check
+        Integer possibleNull = null;
+        if (possibleNull != null) {
+            int safeValue = possibleNull; // Would throw NPE without check
+        }
+    }
+}
+```
 ### Extensions
 - **StringBuilder**: A mutable alternative to `String` for efficient concatenation.
   ```java
   StringBuilder sb = new StringBuilder();
   sb.append("AP").append("CS").append("A");
   String result = sb.toString(); // "APCSA"
-  ```
-- **Wrapper Classes**: `Integer`, `Double`, `Boolean` wrap primitives for object-oriented use.
-  ```java
-  Integer apScore = 5; // Autoboxing
-  int score = apScore; // Unboxing
   ```
 - **Advanced Math**: Use `Math.sin()`, `Math.cos()`, `Math.log()`, `Math.exp()` for scientific calculations.
   ```java

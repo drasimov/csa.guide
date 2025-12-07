@@ -68,11 +68,86 @@ Grade: 87
 - Automatically iterates from start to end of the array/collection.  
 - **Limitation**: Cannot modify array elements or access their indices directly.  
 - **Top Tip**: Use this loop when you only need to read elements sequentially, not their positions.  
-#### Common Errors  
-- **Modifying Elements**: Changes to `element` don't affect the original array (it's a copy).  
-- **Misusing with Non-Iterables**: Only works with arrays or collections, not single values.  
+#### Common Errors
+- **Modifying Elements**: Changes to `element` don't affect the original array (it's a copy).
+- **Misusing with Non-Iterables**: Only works with arrays or collections, not single values.
 ---
-## 2. Searching Algorithms  
+### 1.3 While Loop
+#### Definition
+A **while loop** is a control structure that repeats a block of code as long as a specified condition remains `true`. Unlike `for` loops, `while` loops are ideal when the number of iterations is unknown beforehand, such as reading input until a sentinel value is encountered or processing data until a condition is met.
+#### Syntax
+```java
+while (condition) {
+    // code to be executed while condition is true
+}
+```
+- **Condition**: A Boolean expression evaluated before each iteration. If `true`, the loop executes; if `false`, the loop terminates.
+- **Loop Body**: The block of code to repeat, which should eventually make the condition `false` to avoid infinite loops.
+#### Example: Counting Down
+```java
+int count = 5;
+while (count > 0) {
+    System.out.println("Count: " + count);
+    count--; // Decrement to eventually make condition false
+}
+```
+**Output**:
+```
+Count: 5
+Count: 4
+Count: 3
+Count: 2
+Count: 1
+```
+#### Example: User Input Sentinel
+```java
+import java.util.Scanner;
+Scanner scanner = new Scanner(System.in);
+int sum = 0;
+int value;
+System.out.println("Enter integers (0 to stop):");
+value = scanner.nextInt();
+while (value != 0) {
+    sum += value;
+    value = scanner.nextInt();
+}
+System.out.println("Sum: " + sum);
+```
+#### Key Notes
+- **Pre-test Loop**: The condition is checked before each iteration; if initially `false`, the loop body never executes.
+- **Infinite Loops**: Ensure the loop body modifies variables in the condition to eventually make it `false`.
+- **When to Use**: Use `while` when the number of iterations depends on a dynamic condition (e.g., reading until sentinel, waiting for a status change). Use `for` when iterating a known number of times (e.g., over array indices).
+#### Common Errors
+- **Infinite Loop**: Forgetting to update variables in the condition (e.g., omitting `count--` in the example).
+- **Off-by-One Logic**: Misplacing the condition check can cause one extra or missing iteration.
+- **Uninitialized Variables**: Using a variable in the condition before it's assigned a value causes compilation errors.
+#### Comparison: While vs. For Loops
+| Aspect | While Loop | For Loop |
+|--------|------------|----------|
+| **Use Case** | Unknown iterations, sentinel-controlled | Known iterations, counter-controlled |
+| **Initialization** | Before the loop | In the initialization expression |
+| **Condition Check** | Before each iteration | Before each iteration |
+| **Update** | Inside loop body | In the increment expression |
+| **Example** | `while (x != 0) { ... }` | `for (int i = 0; i < n; i++) { ... }` |
+#### Loop Control Statements: `break` and `continue`
+- **`break`**: Immediately exits the loop, useful for early termination (e.g., stopping a search once the target is found).
+  ```java
+  while (true) {
+      // process
+      if (found) break; // exit loop
+  }
+  ```
+- **`continue`**: Skips the rest of the current iteration and proceeds to the next condition check, helpful for ignoring certain cases.
+  ```java
+  while (count < 10) {
+      count++;
+      if (count % 2 == 0) continue; // skip even numbers
+      System.out.println(count);
+  }
+  ```
+- **Note**: Overusing `break` and `continue` can make loops harder to read; use them judiciously.
+---
+## 2. Searching Algorithms
 Searching algorithms locate specific elements in a data structure. Unit Four covers **linear search** and **binary search**, foundational techniques for data retrieval.
 ### 2.1 Linear Search  
 #### Definition  
@@ -297,16 +372,45 @@ for (int i = 0; i < grades.length; i++) {
 }
 ```
 {% endraw %}
-### 5.2 Loop Control Statements  
-**`break`** and **`continue`** control loop execution:  
-- **`break`**: Exits the loop entirely, useful for early termination (e.g., stopping a search once the target is found).  
-- **`continue`**: Skips the current iteration and proceeds to the next, helpful for ignoring certain elements.  
-- **Example**: Using `break` in a loop to stop after finding a specific grade.  
+### 5.2 Loop Control Statements (Already Covered)  
+The `break` and `continue` statements are covered in Section 1.3 (While Loop). Review that section for syntax, examples, and best practices.  
 ### 5.3 Sorting Variations  
 Explore other sorting algorithms to understand their efficiencies:  
 - **Bubble Sort**: Repeatedly swaps adjacent elements if they're in the wrong order $(O(n^2))$.  
 - **Quicksort**: A faster divide-and-conquer algorithm (average $O(n \log n)$), though not covered in AP CS A.  
 - **Comparison**: Compare bubble sort's simplicity with merge sort's efficiency.  
+### 5.4 Do-While Loop (Optional)
+The **do-while loop** is a variation of the while loop that guarantees the loop body executes at least once, as the condition is checked after each iteration. While not emphasized in AP CS A, it's useful for scenarios where you need to execute code before checking a condition (e.g., menu-driven programs).
+#### Syntax
+```java
+do {
+    // code to execute at least once
+} while (condition);
+```
+#### Example: Input Validation
+```java
+import java.util.Scanner;
+Scanner scanner = new Scanner(System.in);
+int score;
+do {
+    System.out.print("Enter a score (0-100): ");
+    score = scanner.nextInt();
+} while (score < 0 || score > 100);
+System.out.println("Valid score: " + score);
+```
+#### Key Notes
+- **Post-test Loop**: Condition is evaluated after the loop body, ensuring at least one execution.
+- **When to Use**: When you need to guarantee the loop body runs before checking (e.g., user input validation, game loops).
+- **AP CS A Context**: While loops and for loops are the primary focus; do-while loops are rarely tested but good to know.
+#### Comparison with While Loop
+| Aspect | While Loop | Do-While Loop |
+|--------|------------|---------------|
+| **Condition Check** | Before loop body | After loop body |
+| **Minimum Executions** | 0 (if condition false initially) | 1 |
+| **Use Case** | Unknown iterations, sentinel-controlled | At least one iteration required |
+#### Common Errors
+- **Missing Semicolon**: Forgetting the semicolon after `while(condition);` causes compilation error.
+- **Infinite Loop**: If condition never becomes false, loop runs indefinitely.
 ### 5.4 Search Optimizations  
 For faster searches, consider:  
 - **Hashing**: Using hash tables for O(1) average-case lookups (advanced topic).  
@@ -385,4 +489,4 @@ Visualize algorithm behavior:
 ### Best Practices  
 - Use descriptive variable names (e.g., `grade` instead of `g`) for clarity.  
 - Comment complex algorithms to explain logic.  
-- Test with edge cases (e.g., empty arrays, duplicates).  
+- Test with edge cases (e.g., empty arrays, duplicates).

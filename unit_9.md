@@ -3,7 +3,107 @@
 # AP CS A Unit Nine: Inheritance
 ## 1. Overview
 Inheritance is a core object-oriented principle where a class (child/subclass) acquires fields and methods of another class (parent/superclass), promoting code reuse and abstraction. In AP CS A Unit Nine, the foci are single inheritance in Java, method overriding, and object interactions across an inheritance hierarchy.
-## 2. Polymorphism
+## 2. Object Class Methods
+### Definition
+Every class in Java implicitly extends the `Object` class, which provides several important methods that can be overridden to customize behavior. In AP CS A, understanding `toString()`, `equals()`, and `hashCode()` is crucial for creating meaningful class representations and comparisons.
+### Key Methods
+1. **`toString()`**: Returns a string representation of the object. The default implementation returns a string containing the class name and hash code, which is often not useful.
+   ```java
+   public class Student {
+       private String name;
+       private int id;
+       @Override
+       public String toString() {
+           return "Student[name=" + name + ", id=" + id + "]";
+       }
+   }
+   ```
+   - **Usage**: Automatically called by `System.out.println()` and string concatenation.
+   - **Best Practice**: Always override `toString()` to provide meaningful information.
+2. **`equals(Object obj)`**: Compares this object with another for equality. The default implementation uses `==` (reference equality).
+   ```java
+   @Override
+   public boolean equals(Object obj) {
+       if (this == obj) return true;
+       if (obj == null || getClass() != obj.getClass()) return false;
+       Student other = (Student) obj;
+       return id == other.id && Objects.equals(name, other.name);
+   }
+   ```
+   - **Contract**: Must be reflexive, symmetric, transitive, and consistent.
+   - **Best Practice**: Override `equals()` when you need value-based equality, and always override `hashCode()` alongside it.
+3. **`hashCode()`**: Returns an integer hash code for the object, used by hash-based collections like `HashMap` and `HashSet`.
+   ```java
+   @Override
+   public int hashCode() {
+       return Objects.hash(name, id);
+   }
+   ```
+   - **Contract**: Equal objects must have equal hash codes (but not vice versa).
+   - **Best Practice**: Use `Objects.hash()` to generate hash codes from relevant fields.
+### Example Program
+```java
+import java.util.Objects;
+public class APStudent {
+    private String name;
+    private int studentId;
+    public APStudent(String name, int studentId) {
+        this.name = name;
+        this.studentId = studentId;
+    }
+    @Override
+    public String toString() {
+        return "APStudent[name=" + name + ", id=" + studentId + "]";
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        APStudent other = (APStudent) obj;
+        return studentId == other.studentId && Objects.equals(name, other.name);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, studentId);
+    }
+    public static void main(String[] args) {
+        APStudent s1 = new APStudent("Alice", 1001);
+        APStudent s2 = new APStudent("Alice", 1001);
+        APStudent s3 = new APStudent("Bob", 1002);
+        System.out.println("s1: " + s1); // Uses toString()
+        System.out.println("s2: " + s2);
+        System.out.println("s3: " + s3);
+        System.out.println("s1.equals(s2): " + s1.equals(s2)); // true
+        System.out.println("s1.equals(s3): " + s1.equals(s3)); // false
+        System.out.println("s1 == s2: " + (s1 == s2)); // false (different objects)
+        System.out.println("s1.hashCode(): " + s1.hashCode());
+        System.out.println("s2.hashCode(): " + s2.hashCode());
+        System.out.println("s3.hashCode(): " + s3.hashCode());
+    }
+}
+```
+**Output**:
+```
+s1: APStudent[name=Alice, id=1001]
+s2: APStudent[name=Alice, id=1001]
+s3: APStudent[name=Bob, id=1002]
+s1.equals(s2): true
+s1.equals(s3): false
+s1 == s2: false
+s1.hashCode(): 1963863037
+s2.hashCode(): 1963863037
+s3.hashCode(): 66965
+```
+### Common Errors
+- **Forgetting to override `hashCode()` when overriding `equals()`**: This violates the contract and can cause issues with hash-based collections.
+- **Not checking `null` and class type in `equals()`**: Can cause `ClassCastException` or incorrect comparisons.
+- **Using mutable fields in `equals()` and `hashCode()`**: If fields change, the hash code changes, breaking collections.
+- **Inconsistent `equals()` and `hashCode()`**: Equal objects must have equal hash codes.
+### Connection to Inheritance
+- When a subclass overrides `equals()`, it should also consider the superclass fields if the superclass has its own `equals()` implementation.
+- The `instanceof` check in `equals()` should consider the class hierarchy if you want subclasses to be comparable with superclasses (though this is complex and often avoided in AP CS A).
+---
+## 3. Polymorphism
 ### Definition
 Polymorphism allows a reference variable of a parent class type to refer to objects of child classes. The actual method invoked is determined at runtime, depending on the object's concrete class.
 ### Syntax and Behavior
@@ -36,7 +136,7 @@ public class MultipleChoiceRecord extends ApExamRecord {
 }
 ```
 > **Key Point:** The overridden method must be declared in the parent class to be called polymorphically. New methods in the child require downcasting to invoke.
-## 3. Constructors in Inheritance
+## 4. Constructors in Inheritance
 ### Note for Child Class Constructor
 **REMEMBER:** If the parent class has a constructor requiring parameters, the first line of every child constructor must call `super(...)` with appropriate arguments before initializing child-specific fields.
 ```java
@@ -57,7 +157,7 @@ public class ChemistryStudent extends ApStudent {
 }
 ```
 Failure to call `super(...)` causes a compile-time error if no default parent constructor exists.
-## 4. Upcasting and Downcasting
+## 5. Upcasting and Downcasting
 * **Upcasting**: Assigning a child object to a parent reference. Implicit and safe.
   ```java
   ApStudent student = new ChemistryStudent("Alex", 95);
@@ -69,7 +169,7 @@ Failure to call `super(...)` causes a compile-time error if no default parent co
       int score = chem.getLabScore();
   }
   ```
-## 5. Interfaces vs. Abstract Classes
+## 6. Interfaces vs. Abstract Classes
 ### Abstract Classes
 * Can include fields, constructors, concrete methods, and abstract methods.
 * A class may extend one abstract class.
@@ -97,11 +197,11 @@ public class ApEnglish implements GradingPolicy {
     }
 }
 ```
-## 6. Inheritance Pitfalls and Best Practices
+## 7. Inheritance Pitfalls and Best Practices
 * **Fragile Base Class**: Changes in the parent can unexpectedly affect all subclasses—maintain clear documentation.
 * **Use `@Override` Annotation**: Catches signature mismatches at compile time.
 * **Favor Composition Over Inheritance**: Use when reuse can be achieved by containing instances rather than extending.
-## 7. Composition Example
+## 8. Composition Example
 Composition involves including existing classes as fields rather than extending them, promoting loose coupling.
 ```java
 public class ApExamReport {
@@ -116,8 +216,8 @@ public class ApExamReport {
     }
 }
 ```
-## 8. Extensions to Non-Curricular Topics
-### 8.1 How to Use These Principles
+## 9. Extensions to Non-Curricular Topics
+### 9.1 How to Use These Principles
 1. **Liskov Substitution Principle (LSP)**
    * Ensure subclass methods honor the contracts of superclass methods (preconditions and postconditions).
    * Use tests that treat superclass and subclass instances interchangeably.
@@ -171,7 +271,7 @@ public class ApExamReport {
          }
      }
      ```
-### 8.2 Examples
+### 9.2 Examples
 * **LSP in Action**:
   ```java
   public class BasePrinter {
@@ -208,7 +308,7 @@ public class ApExamReport {
   System.out.println(enhanced.execute(answers, key)); // score maybe higher
   ```
 ---
-### 8.3 Additional Advanced Topics
+### 9.3 Additional Advanced Topics
 4. **SOLID Principles**: A mnemonic for five design principles:
    * **S**ingle Responsibility Principle: A class should have one reason to change.
    * **O**pen/Closed Principle: Classes should be open for extension but closed for modification.

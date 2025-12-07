@@ -77,6 +77,121 @@ Methods define a class's functionality, enabling actions like checking academic 
       return scholarGradeLevel >= 90;
   }
   ```
+## 5.1 Method Decomposition
+### Definition
+Method decomposition is the practice of breaking a complex method into smaller, more manageable methods. This improves code readability, maintainability, and reusability—key principles in AP CS A for writing clean, modular code.
+### Why Decompose Methods?
+1. **Readability**: Smaller methods with descriptive names are easier to understand.
+2. **Reusability**: Common logic can be extracted into separate methods and reused.
+3. **Maintainability**: Changes to specific functionality are isolated to a single method.
+4. **Testing**: Smaller methods are easier to test individually.
+### Example: Complex Method Before Decomposition
+```java
+public class GradeCalculator {
+    public void processStudentGrades(int[] scores, String[] names) {
+        // Complex method doing multiple things
+        double sum = 0;
+        for (int score : scores) {
+            sum += score;
+        }
+        double average = sum / scores.length;
+        System.out.println("Class Average: " + average);
+        // Find highest score
+        int highest = scores[0];
+        String topStudent = names[0];
+        for (int i = 1; i < scores.length; i++) {
+            if (scores[i] > highest) {
+                highest = scores[i];
+                topStudent = names[i];
+            }
+        }
+        System.out.println("Top Student: " + topStudent + " with score " + highest);
+        // Determine grade distribution
+        int aCount = 0, bCount = 0, cCount = 0, dCount = 0, fCount = 0;
+        for (int score : scores) {
+            if (score >= 90) aCount++;
+            else if (score >= 80) bCount++;
+            else if (score >= 70) cCount++;
+            else if (score >= 60) dCount++;
+            else fCount++;
+        }
+        System.out.println("Grade Distribution: A=" + aCount + ", B=" + bCount + ", C=" + cCount + ", D=" + dCount + ", F=" + fCount);
+    }
+}
+```
+### Example: After Decomposition
+```java
+public class GradeCalculator {
+    public void processStudentGrades(int[] scores, String[] names) {
+        double average = calculateAverage(scores);
+        printAverage(average);
+        String topStudent = findTopStudent(scores, names);
+        printTopStudent(topStudent, scores, names);
+        int[] gradeDistribution = calculateGradeDistribution(scores);
+        printGradeDistribution(gradeDistribution);
+    }
+    private double calculateAverage(int[] scores) {
+        double sum = 0;
+        for (int score : scores) {
+            sum += score;
+        }
+        return sum / scores.length;
+    }
+    private void printAverage(double average) {
+        System.out.println("Class Average: " + average);
+    }
+    private String findTopStudent(int[] scores, String[] names) {
+        int highest = scores[0];
+        String topStudent = names[0];
+        for (int i = 1; i < scores.length; i++) {
+            if (scores[i] > highest) {
+                highest = scores[i];
+                topStudent = names[i];
+            }
+        }
+        return topStudent;
+    }
+    private void printTopStudent(String topStudent, int[] scores, String[] names) {
+        int highest = scores[0];
+        for (int i = 1; i < scores.length; i++) {
+            if (scores[i] > highest) {
+                highest = scores[i];
+            }
+        }
+        System.out.println("Top Student: " + topStudent + " with score " + highest);
+    }
+    private int[] calculateGradeDistribution(int[] scores) {
+        int[] distribution = new int[5]; // A, B, C, D, F
+        for (int score : scores) {
+            if (score >= 90) distribution[0]++;
+            else if (score >= 80) distribution[1]++;
+            else if (score >= 70) distribution[2]++;
+            else if (score >= 60) distribution[3]++;
+            else distribution[4]++;
+        }
+        return distribution;
+    }
+    private void printGradeDistribution(int[] distribution) {
+        System.out.println("Grade Distribution: A=" + distribution[0] + ", B=" + distribution[1] + ", C=" + distribution[2] + ", D=" + distribution[3] + ", F=" + distribution[4]);
+    }
+}
+```
+### Best Practices for Method Decomposition
+1. **Single Responsibility Principle**: Each method should do one thing well.
+2. **Descriptive Names**: Method names should clearly indicate their purpose.
+3. **Reasonable Size**: If a method exceeds 20-30 lines, consider decomposition.
+4. **Parameter Management**: Avoid passing too many parameters; consider creating helper classes.
+5. **Access Modifiers**: Use `private` for helper methods that are only used within the class.
+### Benefits in AP CS A
+- **Easier Debugging**: Smaller methods make it easier to locate and fix errors.
+- **Code Reuse**: Common operations (like calculating averages) can be reused across multiple methods.
+- **Collaboration**: Team members can work on different methods simultaneously.
+- **Readability**: Makes code more understandable for AP exam readers.
+### Common Errors
+- **Over-decomposition**: Creating too many tiny methods can make code harder to follow.
+- **Poor Naming**: Vague method names like `doStuff()` reduce clarity.
+- **Tight Coupling**: Decomposed methods that depend too much on each other's internal details.
+---
 ## 6. Static Variables and Methods
 Static members belong to the class, not individual objects, useful for tracking shared data like the total number of scholars in a school.
 * **Static variable**:
